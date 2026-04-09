@@ -6,26 +6,87 @@
 
 <style>
 body {
-    text-align: center;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: Arial;
-    margin-top: 100px;
     background: linear-gradient(135deg, #a8edea, #fed6e3);
+    overflow: hidden;
 }
 
-input, button {
-    padding: 10px;
-    font-size: 18px;
+/* Kutu */
+.box {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+    /* Animasyon */
+    transform: scale(0);
+    animation: pop 0.6s ease forwards;
+}
+
+/* Animasyon keyframe */
+@keyframes pop {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* Input */
+input {
+    padding: 12px;
+    width: 220px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #ff8fab;
+    box-shadow: 0 0 10px #ffd6e0;
+}
+
+/* Button */
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(135deg, #ff8fab, #ffb3c6);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Hata yazısı */
+#error {
+    margin-top: 10px;
+    color: red;
 }
 </style>
 </head>
 
 <body>
 
-<h2>İsmini gir</h2>
-<input id="isim">
-<br><br>
-<button onclick="gir()">Giriş Yap</button>
-<p id="hata" style="color:red;"></p>
+<div class="box">
+    <h2>İsmini gir</h2>
+    <input id="isim" placeholder="İsim...">
+    <br>
+    <button onclick="gir()">Giriş Yap</button>
+    <p id="error"></p>
+</div>
 
 <script>
 function gir() {
@@ -44,7 +105,7 @@ function gir() {
         window.location.href = "hazal.html";
     } 
     else {
-        document.getElementById("hata").innerText = "Bu sayfa sana özel değil 😅";
+        document.getElementById("error").innerText = "Bu sayfa sana özel değil 😅";
     }
 }
 </script>
