@@ -3,124 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Hazal</title>
-
 <style>
 body {
-    margin: 0;
-    font-family: Arial;
-    text-align: center;
-    background: linear-gradient(135deg, #ffd1dc, #ffe4e1);
-    overflow: hidden;
+  margin:0;
+  padding:0;
+  font-family: Arial, sans-serif;
+  text-align:center;
+  background: linear-gradient(135deg, #ffe4e1, #ffd1dc);
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Ana kutu */
+/* Arka plan çiçekler (zambak) */
+.flower {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #aaa;
+  animation: float 6s infinite ease-in-out;
+}
+.flower::before {
+  content:"";
+  position:absolute;
+  width:10px;
+  height:20px;
+  background:green;
+  bottom:-20px;
+  left:50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+}
+@keyframes float {
+  0% {transform: translateY(0);}
+  50% {transform: translateY(-20px);}
+  100% {transform: translateY(0);}
+}
+
+/* Mektup kutusu */
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  position: relative;
+  width: 90%;
+  max-width: 350px;
 }
 
-/* Mektup */
-.letter {
-    width: 90%;
-    max-width: 320px;
-    background: white;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    transform: scale(0);
-    animation: pop 0.6s ease forwards;
+/* Zarf / Kağıt */
+.envelope {
+  width: 100%;
+  height: 120px;
+  background: #ffdde1;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  transform: scale(0);
+  animation: pop 0.6s forwards;
 }
 
-/* Animasyon */
+.paper {
+  width: 90%;
+  height: 0;
+  background: white;
+  position: absolute;
+  top:0;
+  left:50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height 1s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.paper p {
+  margin: 10px;
+  font-size: 16px;
+  line-height: 1.4;
+  display: none;
+}
+
 @keyframes pop {
-    0% { transform: scale(0); opacity: 0; }
-    70% { transform: scale(1.1); opacity: 1; }
-    100% { transform: scale(1); }
+  0% { transform: scale(0); opacity:0; }
+  70% { transform: scale(1.1); opacity:1; }
+  100% { transform: scale(1); }
 }
 
 /* Butonlar */
 button {
-    margin-top: 10px;
-    padding: 12px;
-    width: 90%;
-    max-width: 250px;
-    border: none;
-    border-radius: 20px;
-    font-size: 16px;
-    cursor: pointer;
+  padding: 12px 20px;
+  border-radius: 20px;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
-
-.openBtn {
-    background: #ff8fab;
-    color: white;
-}
-
-.closeBtn {
-    background: #ccc;
-}
-
-/* Mesaj */
-#mesaj {
-    display: none;
-    margin-top: 15px;
-}
-
-/* Çiçekler */
-.flower {
-    position: absolute;
-    font-size: 22px;
-    animation: float 5s infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0); }
-}
+.openBtn {background:#ff8fab; color:white;}
+.closeBtn {background:#ccc;}
 </style>
 </head>
 
 <body>
+<!-- Çiçekler -->
+<div class="flower" style="top:10%; left:15%;"></div>
+<div class="flower" style="top:30%; left:70%;"></div>
+<div class="flower" style="top:60%; left:25%;"></div>
+<div class="flower" style="top:80%; left:60%;"></div>
 
 <div class="container">
-
-    <div class="letter">
-        <h2>Bir mektup var 💌</h2>
-        <p>Açmak ister misin?</p>
-
-        <button class="openBtn" onclick="ac()">Aç 💖</button>
-        <button class="closeBtn" onclick="acma()">Açma 🙈</button>
-
-        <div id="mesaj">
-            <p>Son zamanlarda biraz fazla üstüne geldim...</p>
-            <p>Aslında tek sebebi seninle vakit geçirmekti.</p>
-            <p>Eğer seni sıktıysam gerçekten özür dilerim.</p>
-            <p>Sen benim için önemlisin 💖</p>
-        </div>
-    </div>
-
+  <div class="envelope"></div>
+  <div class="paper" id="paper">
+    <p>Son zamanlarda biraz fazla üstüne geldim...</p>
+    <p>Aslında tek sebebi seninle vakit geçirmekti.</p>
+    <p>Eğer seni sıktıysam gerçekten özür dilerim 💖</p>
+    <p>Sen benim için önemlisin 🌸</p>
+  </div>
+  <button class="openBtn" onclick="openLetter()">Aç 💌</button>
+  <button class="closeBtn" onclick="dontOpen()">Açma 🙈</button>
 </div>
 
-<!-- Çiçekler -->
-<div class="flower" style="top:10%; left:15%;">🌸</div>
-<div class="flower" style="top:30%; left:80%;">🌹</div>
-<div class="flower" style="top:70%; left:20%;">🌺</div>
-<div class="flower" style="top:80%; left:75%;">🌷</div>
-
 <script>
-function ac() {
-    document.getElementById("mesaj").style.display = "block";
+function openLetter(){
+  const paper = document.getElementById("paper");
+  paper.style.height = "200px"; // kağıt açılıyor
+  const lines = paper.querySelectorAll("p");
+  let delay = 0;
+  lines.forEach(line => {
+    setTimeout(()=>{line.style.display="block";}, delay);
+    delay += 600;
+  });
 }
 
-function acma() {
-    alert("Ama içinde önemli bir şey var 🥺");
+function dontOpen(){
+  alert("Ama içinde önemli bir şey var 🥺");
 }
 </script>
-
 </body>
 </html>
