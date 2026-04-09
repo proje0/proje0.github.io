@@ -63,16 +63,16 @@ button {
 .paper {
   width: 90%;
   max-width: 320px;
-  max-height: 60vh; /* ekranı kaplamasın */
+  max-height: 50vh; /* ekranın yarısı kadar */
   background: white;
   border-radius: 15px;
-  padding: 20px;
+  padding: 15px 20px;
   margin-top: 20px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
   opacity: 0;
   transform: scale(0.8);
   transition: all 0.6s ease;
-  overflow-y: auto; /* scroll ekledik */
+  overflow-y: auto; /* scroll ekliyoruz */
 }
 
 /* Kağıt açıldığında */
@@ -81,7 +81,7 @@ button {
   transform: scale(1);
 }
 
-/* Scroll bar mobilde minimal */
+/* Scroll bar minimal */
 .paper::-webkit-scrollbar {
   width: 5px;
 }
@@ -92,7 +92,7 @@ button {
 
 /* Yazılar */
 .paper p {
-  margin: 10px 0;
+  margin: 8px 0;
   line-height: 1.4;
   font-size: 16px;
 }
