@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Giriş</title>
+
+<style>
+body {
+    text-align: center;
+    font-family: Arial;
+    margin-top: 100px;
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+}
+
+input, button {
+    padding: 10px;
+    font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>İsmini gir</h2>
+<input id="isim">
+<br><br>
+<button onclick="gir()">Giriş Yap</button>
+<p id="hata" style="color:red;"></p>
+
+<script>
+function gir() {
+    let isim = document.getElementById("isim").value.toLowerCase();
+
+    if (isim === "hasan") {
+        window.location.href = "hasan.html";
+    } 
+    else if (isim === "muzaffer") {
+        window.location.href = "muzaffer.html";
+    } 
+    else if (isim === "berkay") {
+        window.location.href = "berkay.html";
+    } 
+    else if (isim === "hazal") {
+        window.location.href = "hazal.html";
+    } 
+    else {
+        document.getElementById("hata").innerText = "Bu sayfa sana özel değil 😅";
+    }
+}
+</script>
+
+</body>
+</html>
