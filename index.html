@@ -2,6 +2,10 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+
+<!-- EN ÖNEMLİ SATIR -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Giriş</title>
 
 <style>
@@ -13,23 +17,24 @@ body {
     align-items: center;
     font-family: Arial;
     background: linear-gradient(135deg, #a8edea, #fed6e3);
-    overflow: hidden;
 }
 
 /* Kutu */
 .box {
     background: white;
-    padding: 40px;
+    padding: 30px;
     border-radius: 25px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 
-    /* Animasyon */
+    width: 90%;
+    max-width: 350px;
+
     transform: scale(0);
     animation: pop 0.6s ease forwards;
 }
 
-/* Animasyon keyframe */
+/* Animasyon */
 @keyframes pop {
     0% { transform: scale(0); opacity: 0; }
     70% { transform: scale(1.1); opacity: 1; }
@@ -39,38 +44,28 @@ body {
 /* Input */
 input {
     padding: 12px;
-    width: 220px;
+    width: 100%;
     border-radius: 15px;
     border: 1px solid #ccc;
     font-size: 16px;
     outline: none;
-    transition: 0.3s;
-}
-
-input:focus {
-    border-color: #ff8fab;
-    box-shadow: 0 0 10px #ffd6e0;
+    box-sizing: border-box;
 }
 
 /* Button */
 button {
     margin-top: 15px;
-    padding: 12px 25px;
+    padding: 12px;
+    width: 100%;
     border-radius: 20px;
     border: none;
     background: linear-gradient(135deg, #ff8fab, #ffb3c6);
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* Hata yazısı */
+/* Hata */
 #error {
     margin-top: 10px;
     color: red;
@@ -83,7 +78,6 @@ button:hover {
 <div class="box">
     <h2>İsmini gir</h2>
     <input id="isim" placeholder="İsim...">
-    <br>
     <button onclick="gir()">Giriş Yap</button>
     <p id="error"></p>
 </div>
