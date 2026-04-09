@@ -17,27 +17,34 @@ body {
   align-items: center;
 }
 
-/* Çiçek emojileri */
+/* Hareketli emoji çiçekler */
 .flower {
   position: absolute;
   font-size: 28px;
   animation: float 5s infinite ease-in-out;
 }
-
 @keyframes float {
   0% { transform: translateY(0);}
   50% { transform: translateY(-15px);}
   100% { transform: translateY(0);}
 }
 
-/* Ana kutu */
-.container {
+/* Ana kutu aç / açma */
+.box {
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   width: 90%;
   max-width: 350px;
-  background: white;
-  border-radius: 25px;
-  padding: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transform: scale(0);
+  animation: pop 0.6s ease forwards;
+}
+@keyframes pop {
+  0% { transform: scale(0); opacity:0; }
+  70% { transform: scale(1.1); opacity:1; }
+  100% { transform: scale(1); }
 }
 
 /* Butonlar */
@@ -52,46 +59,77 @@ button {
 .openBtn {background:#ff8fab; color:white;}
 .closeBtn {background:#ccc;}
 
-/* Mesaj */
-#mesaj {
-  display: none;
-  margin-top: 15px;
-  line-height: 1.5;
+/* Kağıt */
+.paper {
+  width: 90%;
+  max-width: 320px;
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.6s ease;
+}
+
+/* Kağıt açıldığında */
+.paper.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Yazılar */
+.paper p {
+  margin: 10px 0;
+  line-height: 1.4;
   font-size: 16px;
 }
 </style>
 </head>
 <body>
 
-<!-- Çiçek emojileri ekrana eşit dağıtıldı -->
+<!-- Emoji çiçekler -->
 <div class="flower" style="top:5%; left:5%;">🌸</div>
-<div class="flower" style="top:15%; left:30%;">🌸</div>
-<div class="flower" style="top:25%; left:60%;">🌺</div>
-<div class="flower" style="top:35%; left:80%;">🌷</div>
-<div class="flower" style="top:50%; left:10%;">🌹</div>
-<div class="flower" style="top:60%; left:40%;">🌸</div>
-<div class="flower" style="top:70%; left:70%;">🌺</div>
-<div class="flower" style="top:80%; left:25%;">🌷</div>
-<div class="flower" style="top:90%; left:55%;">🌹</div>
+<div class="flower" style="top:15%; left:30%;">🌺</div>
+<div class="flower" style="top:25%; left:60%;">🌷</div>
+<div class="flower" style="top:35%; left:80%;">🌹</div>
+<div class="flower" style="top:50%; left:10%;">🌸</div>
+<div class="flower" style="top:60%; left:40%;">🌺</div>
+<div class="flower" style="top:70%; left:70%;">🌷</div>
+<div class="flower" style="top:80%; left:25%;">🌹</div>
+<div class="flower" style="top:90%; left:55%;">🌸</div>
 
-<div class="container">
+<!-- Aç/Açma kutusu -->
+<div class="box">
   <h2>Bir mektup var 💌</h2>
   <p>Açmak ister misin?</p>
 
   <button class="openBtn" onclick="ac()">Aç 💖</button>
   <button class="closeBtn" onclick="acma()">Açma 🙈</button>
 
-  <div id="mesaj">
-    <p>Son zamanlarda biraz fazla üstüne geldim...</p>
-    <p>Aslında tek sebebi seninle vakit geçirmekti.</p>
-    <p>Eğer seni sıktıysam gerçekten özür dilerim 💖</p>
-    <p>Sen benim için önemlisin 🌸</p>
+  <!-- Kağıt -->
+  <div class="paper" id="paper">
+    <p>ya aslında yazı okumayı çok sevmediğini biliyorum</p>
+    <p>ama bende kendimi ifade edemiyorum bunu biliyosun</p>
+    <p>Eğer seni sıktıysam gerçekten özür dilerim 🌸</p>
+    <p>Sen benim için önemlisin bunu sende biliyosun</p>
+    <p>şu hayatta başka güvendiğim bir kul yok ama sana</p>
+    <p>olan güvenimi biliyosun seni çok sevdiğimide biliyosun</p>
+    <p>psikolojim bu aralar iyi değil üstüne de geliyorum farkındayım</p>
+    <p>seni üzüyorsam kusura bakma ama emin ol sadece sen mutlu ol</p>
+    <p>diye aşıyorum bazen başka güvenip sevdiğim bir insanda yok</p>
+    <p>senden tek isteğim kavga falanda etsek bırakma beni</p>
+    <p>saten normalde mentalim iyi değil bi de sen bırakırsan</p>
+    <p>yaşamak için sebebim kalmaz...</p>
+    <p>anlatacak daha çok şey var ama okuduğun için şimdilik</p>
+    <p>teşekkürler💖 </p>
   </div>
 </div>
 
 <script>
 function ac() {
-  document.getElementById("mesaj").style.display = "block";
+  document.getElementById("paper").classList.add("show");
 }
 
 function acma() {
