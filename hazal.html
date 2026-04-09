@@ -20,20 +20,20 @@ body {
 /* Hareketli emoji çiçekler */
 .flower {
   position: absolute;
-  font-size: 28px;
+  font-size: 24px;
   animation: float 5s infinite ease-in-out;
 }
 @keyframes float {
   0% { transform: translateY(0);}
-  50% { transform: translateY(-15px);}
+  50% { transform: translateY(-10px);}
   100% { transform: translateY(0);}
 }
 
 /* Ana kutu aç / açma */
 .box {
   background: white;
-  padding: 30px;
-  border-radius: 25px;
+  padding: 20px;
+  border-radius: 20px;
   text-align: center;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   width: 90%;
@@ -49,30 +49,32 @@ body {
 
 /* Butonlar */
 button {
-  padding: 12px 20px;
-  border-radius: 20px;
+  padding: 10px 18px;
+  border-radius: 15px;
   border: none;
-  margin: 8px;
+  margin: 6px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
 }
 .openBtn {background:#ff8fab; color:white;}
 .closeBtn {background:#ccc;}
 
 /* Kağıt */
 .paper {
-  width: 90%;
-  max-width: 320px;
-  max-height: 50vh; /* ekranın yarısı kadar */
+  width: 85%;
+  max-width: 300px;
+  max-height: 40vh; /* artık çok daha küçük */
   background: white;
-  border-radius: 15px;
-  padding: 15px 20px;
-  margin-top: 20px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   opacity: 0;
   transform: scale(0.8);
-  transition: all 0.6s ease;
-  overflow-y: auto; /* scroll ekliyoruz */
+  transition: all 0.5s ease;
+  overflow-y: auto;
+  font-size: 14px; /* font küçüldü */
+  line-height: 1.4;
 }
 
 /* Kağıt açıldığında */
@@ -88,13 +90,6 @@ button {
 .paper::-webkit-scrollbar-thumb {
   background: #ff8fab;
   border-radius: 10px;
-}
-
-/* Yazılar */
-.paper p {
-  margin: 8px 0;
-  line-height: 1.4;
-  font-size: 16px;
 }
 </style>
 </head>
