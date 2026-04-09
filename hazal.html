@@ -63,6 +63,7 @@ button {
 .paper {
   width: 90%;
   max-width: 320px;
+  max-height: 60vh; /* ekranı kaplamasın */
   background: white;
   border-radius: 15px;
   padding: 20px;
@@ -71,12 +72,22 @@ button {
   opacity: 0;
   transform: scale(0.8);
   transition: all 0.6s ease;
+  overflow-y: auto; /* scroll ekledik */
 }
 
 /* Kağıt açıldığında */
 .paper.show {
   opacity: 1;
   transform: scale(1);
+}
+
+/* Scroll bar mobilde minimal */
+.paper::-webkit-scrollbar {
+  width: 5px;
+}
+.paper::-webkit-scrollbar-thumb {
+  background: #ff8fab;
+  border-radius: 10px;
 }
 
 /* Yazılar */
@@ -123,7 +134,7 @@ button {
     <p>saten normalde mentalim iyi değil bi de sen bırakırsan</p>
     <p>yaşamak için sebebim kalmaz...</p>
     <p>anlatacak daha çok şey var ama okuduğun için şimdilik</p>
-    <p>teşekkürler💖 </p>
+    <p>teşekkürler💖</p>
   </div>
 </div>
 
