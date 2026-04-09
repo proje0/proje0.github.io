@@ -6,11 +6,10 @@
 <title>Hazal</title>
 <style>
 body {
-  margin:0;
-  padding:0;
+  margin: 0;
   font-family: Arial, sans-serif;
-  text-align:center;
-  background: linear-gradient(135deg, #ffe4e1, #ffd1dc);
+  text-align: center;
+  background: linear-gradient(135deg, #ffd1dc, #ffe4e1);
   overflow: hidden;
   height: 100vh;
   display: flex;
@@ -18,78 +17,27 @@ body {
   align-items: center;
 }
 
-/* Arka plan çiçekler (zambak) */
+/* Çiçek emojileri */
 .flower {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  background: white;
-  border-radius: 50%;
-  box-shadow: 0 0 5px #aaa;
-  animation: float 6s infinite ease-in-out;
-}
-.flower::before {
-  content:"";
-  position:absolute;
-  width:10px;
-  height:20px;
-  background:green;
-  bottom:-20px;
-  left:50%;
-  transform: translateX(-50%);
-  border-radius: 5px;
-}
-@keyframes float {
-  0% {transform: translateY(0);}
-  50% {transform: translateY(-20px);}
-  100% {transform: translateY(0);}
+  font-size: 28px;
+  animation: float 5s infinite ease-in-out;
 }
 
-/* Mektup kutusu */
+@keyframes float {
+  0% { transform: translateY(0);}
+  50% { transform: translateY(-15px);}
+  100% { transform: translateY(0);}
+}
+
+/* Ana kutu */
 .container {
-  position: relative;
   width: 90%;
   max-width: 350px;
-}
-
-/* Zarf / Kağıt */
-.envelope {
-  width: 100%;
-  height: 120px;
-  background: #ffdde1;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  position: relative;
-  overflow: hidden;
-  transform: scale(0);
-  animation: pop 0.6s forwards;
-}
-
-.paper {
-  width: 90%;
-  height: 0;
   background: white;
-  position: absolute;
-  top:0;
-  left:50%;
-  transform: translateX(-50%);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: height 1s ease;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.paper p {
-  margin: 10px;
-  font-size: 16px;
-  line-height: 1.4;
-  display: none;
-}
-
-@keyframes pop {
-  0% { transform: scale(0); opacity:0; }
-  70% { transform: scale(1.1); opacity:1; }
-  100% { transform: scale(1); }
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 /* Butonlar */
@@ -97,49 +45,59 @@ button {
   padding: 12px 20px;
   border-radius: 20px;
   border: none;
-  margin: 5px;
+  margin: 8px;
   cursor: pointer;
   font-size: 16px;
 }
 .openBtn {background:#ff8fab; color:white;}
 .closeBtn {background:#ccc;}
+
+/* Mesaj */
+#mesaj {
+  display: none;
+  margin-top: 15px;
+  line-height: 1.5;
+  font-size: 16px;
+}
 </style>
 </head>
-
 <body>
-<!-- Çiçekler -->
-<div class="flower" style="top:10%; left:15%;"></div>
-<div class="flower" style="top:30%; left:70%;"></div>
-<div class="flower" style="top:60%; left:25%;"></div>
-<div class="flower" style="top:80%; left:60%;"></div>
+
+<!-- Çiçek emojileri ekrana eşit dağıtıldı -->
+<div class="flower" style="top:5%; left:5%;">🌸</div>
+<div class="flower" style="top:15%; left:30%;">🌸</div>
+<div class="flower" style="top:25%; left:60%;">🌺</div>
+<div class="flower" style="top:35%; left:80%;">🌷</div>
+<div class="flower" style="top:50%; left:10%;">🌹</div>
+<div class="flower" style="top:60%; left:40%;">🌸</div>
+<div class="flower" style="top:70%; left:70%;">🌺</div>
+<div class="flower" style="top:80%; left:25%;">🌷</div>
+<div class="flower" style="top:90%; left:55%;">🌹</div>
 
 <div class="container">
-  <div class="envelope"></div>
-  <div class="paper" id="paper">
+  <h2>Bir mektup var 💌</h2>
+  <p>Açmak ister misin?</p>
+
+  <button class="openBtn" onclick="ac()">Aç 💖</button>
+  <button class="closeBtn" onclick="acma()">Açma 🙈</button>
+
+  <div id="mesaj">
     <p>Son zamanlarda biraz fazla üstüne geldim...</p>
     <p>Aslında tek sebebi seninle vakit geçirmekti.</p>
     <p>Eğer seni sıktıysam gerçekten özür dilerim 💖</p>
     <p>Sen benim için önemlisin 🌸</p>
   </div>
-  <button class="openBtn" onclick="openLetter()">Aç 💌</button>
-  <button class="closeBtn" onclick="dontOpen()">Açma 🙈</button>
 </div>
 
 <script>
-function openLetter(){
-  const paper = document.getElementById("paper");
-  paper.style.height = "200px"; // kağıt açılıyor
-  const lines = paper.querySelectorAll("p");
-  let delay = 0;
-  lines.forEach(line => {
-    setTimeout(()=>{line.style.display="block";}, delay);
-    delay += 600;
-  });
+function ac() {
+  document.getElementById("mesaj").style.display = "block";
 }
 
-function dontOpen(){
+function acma() {
   alert("Ama içinde önemli bir şey var 🥺");
 }
 </script>
+
 </body>
 </html>
