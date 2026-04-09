@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berkay</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Arka plan emoji */
+.flower {
+  position: absolute;
+  font-size: 26px;
+  animation: float 5s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0);}
+  50% { transform: translateY(-12px);}
+  100% { transform: translateY(0);}
+}
+
+/* Ana kutu */
+.box {
+  background: white;
+  padding: 22px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 350px;
+  transform: scale(0);
+  animation: pop 0.6s ease forwards;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); opacity:0; }
+  70% { transform: scale(1.1); opacity:1; }
+  100% { transform: scale(1); }
+}
+
+/* Butonlar */
+button {
+  padding: 10px 18px;
+  border-radius: 15px;
+  border: none;
+  margin: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+.openBtn {background:#4facfe; color:white;}
+.closeBtn {background:#ccc;}
+
+/* Mektup */
+.paper {
+  width: 85%;
+  max-width: 300px;
+  max-height: 45vh;
+  margin-top: 15px;
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  overflow-y: auto;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: 0.5s ease;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.paper.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.paper::-webkit-scrollbar {
+  width: 4px;
+}
+.paper::-webkit-scrollbar-thumb {
+  background: #4facfe;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Arka plan -->
+<div class="flower" style="top:5%; left:5%;">🤝</div>
+<div class="flower" style="top:15%; left:80%;">🔥</div>
+<div class="flower" style="top:30%; left:20%;">💙</div>
+<div class="flower" style="top:50%; left:70%;">🤝</div>
+<div class="flower" style="top:70%; left:10%;">🔥</div>
+<div class="flower" style="top:85%; left:60%;">💙</div>
+
+<!-- Kutu -->
+<div class="box">
+  <h2>Hasan 👊</h2>
+  <p>Kardeşim… bir şey var</p>
+
+  <button class="openBtn" onclick="ac()">Aç 🤝</button>
+  <button class="closeBtn" onclick="acma()">Açma 🙈</button>
+
+  <div class="paper" id="paper">
+    <p>kanka aslında sana bir şey demek istiyorum</p>
+    <p>son zamanlarda biraz fazla üstüne geldiysem kusura bakma</p>
+    <p>bizim iş proje falan ama asıl önemli olan dostluk</p>
+    <p>seni kaybetmek istemem çünkü sen benim kardeşimsin</p>
+    <p>bazı şeyleri fazla ciddiye almış olabilirim farkındayım</p>
+    <p>ama seninle yaptığım şeyler benim için değerli</p>
+    <p>ne olursa olsun arkandayım, bunu bil yeter</p>
+    <p>kırdıysam özür dilerim kardeşim 🤝</p>
+    <p>iyi ki varsın</p>
+  </div>
+</div>
+
+<script>
+function ac() {
+  document.getElementById("paper").classList.add("show");
+}
+
+function acma() {
+  alert("Kanka içinde önemli şeyler var 😄");
+}
+</script>
+
+</body>
+</html>
