@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hazal</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    text-align: center;
+    background: linear-gradient(135deg, #ffd1dc, #ffe4e1);
+    overflow: hidden;
+}
+
+/* Ana kutu */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Mektup */
+.letter {
+    width: 90%;
+    max-width: 320px;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transform: scale(0);
+    animation: pop 0.6s ease forwards;
+}
+
+/* Animasyon */
+@keyframes pop {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* Butonlar */
+button {
+    margin-top: 10px;
+    padding: 12px;
+    width: 90%;
+    max-width: 250px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.openBtn {
+    background: #ff8fab;
+    color: white;
+}
+
+.closeBtn {
+    background: #ccc;
+}
+
+/* Mesaj */
+#mesaj {
+    display: none;
+    margin-top: 15px;
+}
+
+/* Çiçekler */
+.flower {
+    position: absolute;
+    font-size: 22px;
+    animation: float 5s infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="letter">
+        <h2>Bir mektup var 💌</h2>
+        <p>Açmak ister misin?</p>
+
+        <button class="openBtn" onclick="ac()">Aç 💖</button>
+        <button class="closeBtn" onclick="acma()">Açma 🙈</button>
+
+        <div id="mesaj">
+            <p>Son zamanlarda biraz fazla üstüne geldim...</p>
+            <p>Aslında tek sebebi seninle vakit geçirmekti.</p>
+            <p>Eğer seni sıktıysam gerçekten özür dilerim.</p>
+            <p>Sen benim için önemlisin 💖</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- Çiçekler -->
+<div class="flower" style="top:10%; left:15%;">🌸</div>
+<div class="flower" style="top:30%; left:80%;">🌹</div>
+<div class="flower" style="top:70%; left:20%;">🌺</div>
+<div class="flower" style="top:80%; left:75%;">🌷</div>
+
+<script>
+function ac() {
+    document.getElementById("mesaj").style.display = "block";
+}
+
+function acma() {
+    alert("Ama içinde önemli bir şey var 🥺");
+}
+</script>
+
+</body>
+</html>
